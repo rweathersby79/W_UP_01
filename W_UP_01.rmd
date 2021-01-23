@@ -1,7 +1,7 @@
 ---
 title: "W_UP_01"
 author: "Rashonda Weathersby"
-date: "Spring 2021"
+date: "January 22, 2021"
 output: html_document
 ---
 
@@ -30,7 +30,8 @@ $H_A$: The average number of pushups done by line players is statistically diffe
 # Methods
 
 <!--Decide on your methods: use "variable analysis" or other appropriate descriptors. Make sure to choose at least one graphical method and at least one numerical method.!-->
-
+The number of push ups player can do is numerical and it is the response. The position they play is categorical which is explanatory.  
+We will use numeric ~ categorical
 # Results
 
 <!--Divide this section into two sub-sections: One for your descriptive results and one for your inferential results.!-->
@@ -41,9 +42,42 @@ $H_A$: The average number of pushups done by line players is statistically diffe
 
 <!--Graphical results here. Make sure to show your code. Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too. Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
-### Numerical Descriptive Results
 
+## Now with ggplot - first select the basic data
+
+```{r}
+basicCN <- ggplot(mydata,aes(x=position,y=pushups))
+```
+## Now add in boxplot
+
+```{r}
+basicCN + geom_boxplot()
+```
+  
+  
+### get fancy  
+
+```{r}
+basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+```
+This boxplot is showing that the skilled players did more pushups than the line players. 
+
+  
+### Numerical Descriptive Results
+### Plot boxplots
+
+```{r}
+boxplot(pushups~position,data=mydata)
+
+
+```
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+# Numerical results
+
+```{r}
+favstats(pushups~position,data=mydata)
+```
 
 ## Inferential Results
 
