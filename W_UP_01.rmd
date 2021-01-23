@@ -37,6 +37,7 @@ The number of push ups player can do is numerical and it is the response. The po
 <!--Divide this section into two sub-sections: One for your descriptive results and one for your inferential results.!-->
 
 We will use numeric ~ categorical variables.
+
 ## Descriptive Results
 
 ### Graphical Descriptive Results
