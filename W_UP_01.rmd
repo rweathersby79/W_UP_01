@@ -31,11 +31,12 @@ $H_A$: The average number of pushups done by line players is statistically diffe
 
 <!--Decide on your methods: use "variable analysis" or other appropriate descriptors. Make sure to choose at least one graphical method and at least one numerical method.!-->
 The number of push ups player can do is numerical and it is the response. The position they play is categorical which is explanatory.  
-We will use numeric ~ categorical
+
 # Results
 
 <!--Divide this section into two sub-sections: One for your descriptive results and one for your inferential results.!-->
 
+We will use numeric ~ categorical variables.
 ## Descriptive Results
 
 ### Graphical Descriptive Results
@@ -54,24 +55,20 @@ basicCN <- ggplot(mydata,aes(x=position,y=pushups))
 basicCN + geom_boxplot()
 ```
   
+
+The boxplot is showing that the skilled players did more pushups in 2 minutes  than the line players.   
   
 ### get fancy  
 
 ```{r}
-basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Line player vs Skill\n with 2 lines")
 ```
 
-This boxplot is showing that the skilled players did more pushups in 2 minutes  than the line players. According to the graph, the line player the highest number of pushup was 35 however, with the skilled the highest was about 91 pushusp. 
+According to the boxplot, the line player the highest number of pushup was 35 however, with the skilled the highest was about 91 pushups. 
 
   
 ### Numerical Descriptive Results
-### Plot boxplots
 
-```{r}
-boxplot(pushups~position,data=mydata)
-
-
-```
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 # Numerical results
@@ -81,12 +78,21 @@ favstats(pushups~position,data=mydata)
 ```
 
 This chart shows on average the skilled players are able to do about 50 pushups in 2 mins, as the line players are only able to do 17 pushups in 2 minutes. 
+
 ## Inferential Results
 
 <!--State hypothesis clearly. Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc. Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
+```{r}
+t.test(pushups~position,data=mydata)
+```
+
+Base on the Inferential results, the p-value is 0.000009421. The p-value is so small that the results is unlikely to occur by chance. 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here. If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason. Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
+The question "Is there a difference between the number of pushups done in 2 minutes between line players, and skilled players?"
+
+In this review we placed two box plots,and a numerical summary showing that the skilled players were on average able to do more pushups in 2 minutes compared to the line players. All things considered, the inferential results shows that the p-value is so small that we can come to the conclusion; that the skilled players can do more pushups then, the line players. 
